@@ -12,7 +12,7 @@ userRoutes.route('/update/:id')
     .post([userValidation.register, withAuth], userController.updateUser);
 userRoutes.delete('/delete/:id', userController.deleteUserById);
 userRoutes.post('/authenticate', userController.authenticateUser);
-userRoutes.get('/checkToken/:token', withAuth, function (req, res) {
+userRoutes.get('/checkToken', withAuth, function (req, res) {
     res.sendStatus(200);
 });
 userRoutes.get('/secret', withAuth, function (req, res) {

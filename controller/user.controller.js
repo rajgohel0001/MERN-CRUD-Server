@@ -2,6 +2,7 @@ const userModel = require('../model/user.model');
 const userService = require('../service/user.service');
 
 /**
+ * @params {req: user data} 
  * User Sign Up
  */
 module.exports.addUser = (req, res) => {
@@ -19,6 +20,7 @@ module.exports.addUser = (req, res) => {
 }
 
 /**
+ * @params {res: user Data}
  * Get all users
  */
 module.exports.getUser = function (req, res) {
@@ -31,8 +33,10 @@ module.exports.getUser = function (req, res) {
 }
 
 /**
+ * @params {req: user data, res: updated user data}
  * Update user
  */
+
 module.exports.updateUser = function (req, res) {
     const userData = {
         user_name: req.body.user_name,
@@ -49,6 +53,7 @@ module.exports.updateUser = function (req, res) {
 }
 
 /**
+ * @params {req: user id, res: user data}
  * Get User By Id
  */
 module.exports.getUserById = function (req, res) {
@@ -62,6 +67,7 @@ module.exports.getUserById = function (req, res) {
 }
 
 /**
+ * @params {req: user id, res: user data}
  * Delete User
  */
 module.exports.deleteUserById = function (req,res) {
@@ -75,6 +81,7 @@ module.exports.deleteUserById = function (req,res) {
 }
 
 /**
+ * @params {req: user name and password}
  * Authenticate User
  */
 module.exports.authenticateUser = function(req,res) {

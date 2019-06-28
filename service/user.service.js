@@ -3,6 +3,10 @@ const user = require('../model/user.model');
 const jwt = require('jsonwebtoken');
 const secret = 'mysecretsshhh';
 
+/**
+ * @params {user data}
+ * add user
+ */
 module.exports.addUser = (userData) => {
     return new Promise((resolve,reject)=>{
         user.create(userData,(userError,userResponse)=>{
@@ -16,6 +20,9 @@ module.exports.addUser = (userData) => {
     })
 }
 
+/**
+ * get user
+ */
 module.exports.getUser = () =>{
     return new Promise((resolve,reject)=>{
         user.find({isDelete:false},(userError,userResponse)=>{
@@ -29,6 +36,10 @@ module.exports.getUser = () =>{
     });
 }
 
+/**
+ * @params {user data}
+ * update user
+ */
 module.exports.updateUser = (userData) =>{
     return new Promise((resolve,reject)=>{
         user.findOneAndUpdate({_id:userData.id}, 
@@ -44,6 +55,10 @@ module.exports.updateUser = (userData) =>{
     })
 }
 
+/**
+ * @params {user id}
+ * get user by id
+ */
 module.exports.getUserById = (id) => {
     return new Promise((resolve,reject)=>{
         user.findById(id,(userError,userResponse)=>{
@@ -57,6 +72,10 @@ module.exports.getUserById = (id) => {
     })
 }
 
+/**
+ * @params {user id}
+ * delete user
+ */
 module.exports.deleteUserById = (id) => {
     return new Promise((resolve,reject)=>{
         user.findOneAndUpdate({_id:id},
@@ -74,6 +93,10 @@ module.exports.deleteUserById = (id) => {
     })
 }
 
+/**
+ * @params {user data}
+ * authenticate user
+ */
 module.exports.authenticateUser = (userData) => {
     return new Promise((resolve,reject) => {
         user.findOne({user_name: userData.user_name},
