@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const PORT = 4000;
+// const PORT = 4000;
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB.js');
 const userRouter = require('./route/user.route');
 const cookieParser = require('cookie-parser');
+const ENV = require('dotenv');
+ENV.config();
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -20,6 +22,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/user',userRouter);
 
-app.listen(PORT, function(){
-  console.log('Server is running on Port:',PORT);
+app.listen(process.env.PORT, function(){
+  console.log('Server is running on Port:',process.env.PORT);
 });

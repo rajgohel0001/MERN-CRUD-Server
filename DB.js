@@ -1,3 +1,6 @@
+const ENV = require('dotenv');
+ENV.config();
+
 module.exports = {
-    DB: 'mongodb://localhost:27017/reactcrud'
+    DB: process.env.DATABASE
 }
