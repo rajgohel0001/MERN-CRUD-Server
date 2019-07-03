@@ -99,7 +99,7 @@ module.exports.deleteUserById = (id) => {
  */
 module.exports.authenticateUser = (userData) => {
     return new Promise((resolve,reject) => {
-        user.findOne({user_name: userData.user_name},
+        user.findOne({user_name: userData.user_name, user_password: userData.user_password},
             (userError,userResponse) => {
                 if(userError){
                     console.log('userError',userError);
