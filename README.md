@@ -1,12 +1,11 @@
 ## Table Of Contents
 
 - [About-this-project](#About-this-project)
-    - [What is MERN-CRUD?](#What is MERN-CRUD?)
--   [Directory-Structure](#Directory-Structure)
--    [Getting-Started](#Getting-Started)
--    [Version-Control](#Version-Control)
--    [Running-The-Project](#Running-The-Project)
--    [Dependancies](#Dependancies)
+- [Directory-Structure](#Directory-Structure)
+- [Getting-Started](#Getting-Started)
+- [Version-Control](#Version-Control)
+- [Running-The-Project](#Running-The-Project)
+- [Dependancies](#Dependancies)
 
 ## About This Project
 
