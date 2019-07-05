@@ -7,11 +7,12 @@ const withAuth = require('../middleware/auth');
 userRoutes.route('/add')
     .post([userValidation.register], userController.addUser);
 userRoutes.get('/', userController.getUser);
-userRoutes.get('/edit/:id', userController.getUserById);
+userRoutes.route('/edit/:id')
+    .post([userValidation.checkId], userController.getUserById)
 userRoutes.route('/update/:id')
-    .post([userValidation.register, withAuth], userController.updateUser);
-userRoutes.delete('/delete/:id', userController.deleteUserById);
-userRoutes.post('/authenticate', userController.authenticateUser);
+    .post([userValidation.checkId], userController.updateUser);
+userRoutes.route('/authenticate')
+    .post([userValidation.authUser], userController.authenticateUser)
 userRoutes.get('/checkToken', withAuth, function (req, res) {
     res.sendStatus(200);
 });
