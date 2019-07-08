@@ -19,5 +19,8 @@ userRoutes.get('/checkToken', withAuth, function (req, res) {
 userRoutes.get('/secret', withAuth, function (req, res) {
     res.send('The password is potato');
 });
+userRoutes.route('/comment')
+    .post([userValidation.checkComment], userController.addComment);
+userRoutes.put('/getComment', userController.getComment);
 
 module.exports = userRoutes;

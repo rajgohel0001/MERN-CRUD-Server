@@ -7,6 +7,7 @@ module.exports.register = (req, res, next) => {
         user_name: Joi.string().trim().required(),
         user_address: Joi.string().trim().required(),
         user_password: Joi.string().trim().required(),
+        comment: Joi.string().required()
     });
 
     Joi.validate(
@@ -35,7 +36,7 @@ module.exports.checkId = (req, res, next) => {
     });
 
     Joi.validate(
-        req.params.id,
+        req.params,
         schema,
         { convert: true },
         (err, value) => {
@@ -75,3 +76,27 @@ module.exports.authUser = (req, res, next) => {
         }
     );
 };
+
+module.exports.checkComment = (req, res, next) => {
+    const schema = Joi.object().keys({
+        userId: Joi.string().required(),
+        comment: Joi.string().required()
+    })
+
+    Joi.validate(
+        req.body,
+        schema,
+        { convert: true },
+        (err, value) => {
+            if (err) {
+                console.log("Error inside Joi", err);
+                return res.status(400).json({
+                    message: err.details[0] && err.details[0].message ? err.details[0].message : 'Bad request',
+                    status: 400
+                });
+            } else {
+                next();
+            }
+        }
+    );
+}

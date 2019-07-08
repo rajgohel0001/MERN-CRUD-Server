@@ -14,6 +14,10 @@ const User = new Schema({
     isDelete:{
         type:Boolean,
         default:false
+    },
+    comment:{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
     }
 },{
     collection:'user'  
